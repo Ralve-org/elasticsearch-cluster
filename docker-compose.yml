@@ -1,0 +1,230 @@
+version: '3.8'
+
+services:
+  es-node1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node1
+    environment:
+      - node.name=es-node1
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node1/data:/usr/share/elasticsearch/data
+      - ./node1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9201:9200"
+      - "9301:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node1"]
+
+  es-node2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node2
+    environment:
+      - node.name=es-node2
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node2/data:/usr/share/elasticsearch/data
+      - ./node2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9202:9200"
+      - "9302:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node2"]
+
+  es-node3:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node3
+    environment:
+      - node.name=es-node3
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node3/data:/usr/share/elasticsearch/data
+      - ./node3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9203:9200"
+      - "9303:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node3"]
+
+  es-node4:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node4
+    environment:
+      - node.name=es-node4
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node4/data:/usr/share/elasticsearch/data
+      - ./node4/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9204:9200"
+      - "9304:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node4"]
+
+  es-node5:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node5
+    environment:
+      - node.name=es-node5
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node5/data:/usr/share/elasticsearch/data
+      - ./node5/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9205:9200"
+      - "9305:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node5"]
+
+  es-node6:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node6
+    environment:
+      - node.name=es-node6
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node6/data:/usr/share/elasticsearch/data
+      - ./node6/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9206:9200"
+      - "9306:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node6"]
+
+  es-node7:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node7
+    environment:
+      - node.name=es-node7
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node7/data:/usr/share/elasticsearch/data
+      - ./node7/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9207:9200"
+      - "9307:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node7"]
+
+  es-node8:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+    container_name: es-node8
+    environment:
+      - node.name=es-node8
+      - cluster.name=prod-cluster
+      - discovery.seed_hosts=es-node1,es-node2,es-node3,es-node4,es-node5,es-node6,es-node7,es-node8
+      - cluster.initial_master_nodes=es-node1,es-node2,es-node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms32g -Xmx32g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=qnova@acs123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./node8/data:/usr/share/elasticsearch/data
+      - ./node8/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./generate-certificates.sh:/usr/local/bin/generate-certificates.sh
+    ports:
+      - "9208:9200"
+      - "9308:9300"
+    networks:
+      - esnet
+    entrypoint: ["/usr/local/bin/generate-certificates.sh", "es-node8"]
+
+networks:
+  esnet:
+    driver: bridge

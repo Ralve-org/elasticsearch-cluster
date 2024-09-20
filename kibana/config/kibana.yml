@@ -1,0 +1,15 @@
+server.host: "0.0.0.0"
+server.publicBaseUrl: "http://195.26.231.7:5601"
+
+elasticsearch.hosts: 
+  - "http://es-node1:9200"
+  - "http://es-node2:9200"
+  - "http://es-node3:9200"
+  - "http://es-node4:9200"
+  - "http://es-node5:9200"
+  - "http://es-node6:9200"
+  - "http://es-node7:9200"
+  - "http://es-node8:9200"
+
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "qnova@acs123"

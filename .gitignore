@@ -1,0 +1,12 @@
+# Ignore data folders
+node1/data/
+node2/data/
+node3/data/
+node4/data/
+node5/data/
+node6/data/
+node7/data/
+node8/data/
+
+# Ignore certificate files (if any should be excluded)
+certs/

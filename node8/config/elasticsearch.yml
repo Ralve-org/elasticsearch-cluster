@@ -1,0 +1,14 @@
+cluster.name: "prod-cluster"
+node.name: "es-node8"
+path.data: /usr/share/elasticsearch/data
+path.logs: /usr/share/elasticsearch/logs
+network.host: 0.0.0.0
+http.port: 9200
+transport.port: 9300
+discovery.seed_hosts: ["es-node1", "es-node2", "es-node3", "es-node4", "es-node5", "es-node6", "es-node7", "es-node8"]
+cluster.initial_master_nodes: ["es-node1", "es-node2", "es-node3"]
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.keystore.path: /usr/share/elasticsearch/config/certs/es-node8-certificates.p12
+xpack.security.transport.ssl.truststore.path: /usr/share/elasticsearch/config/certs/es-node8-certificates.p12
+
